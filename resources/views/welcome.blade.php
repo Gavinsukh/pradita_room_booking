@@ -25,7 +25,7 @@
                 <a href="/">Home</a>
                 <a href="#benefits">Benefits</a>
                 <a href="#steps">Guide</a>
-                <a href="#contact">Contact</a>
+                <a href="#contact">Contact Us</a>
             </div>
 
             <div class="actions space-x-4">
