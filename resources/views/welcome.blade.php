@@ -120,7 +120,7 @@
                     </div>
                     <div class="flex items-center">
                         <img src="{{ asset('images/phone.png') }}" alt="Phone" class="h-10 w-10 mr-2">
-                        <span>Contact us: 021 5568 9999 / 0815 8510 9999 </span>
+                        <span>Contact us: 021 5568 9999 / 0815 8510 9999 / info@pradita.ac.id</span>
                     </div>
                     <div class="flex items-center">
                         <img src="{{ asset('images/location.png') }}" alt="Phone" class="h-10 w-10 mr-2">
