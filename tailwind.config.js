@@ -16,6 +16,18 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'green-pea': '#1d6e41',
+                'concrete': '#f3f3f3',
+                'tango': '#f47f26',
+                'summer-green': '#95b8a4',
+                'manhattan': '#f2c897',
+                'bay-leaf': '#74a48c',
+                'apricot': '#ec777d',
+                'conch': '#c2d4ca',
+                'mandys-pink': '#f2d1bd',
+                'beauty-bush': '#ecaeb4',
+            },
         },
     },
 

@@ -13,7 +13,7 @@
         <!-- Styles -->
         @vite(['resources/js/app.js', 'resources/css/app.css'])
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased bg-green-pea">
 
     </body>
 </html>
