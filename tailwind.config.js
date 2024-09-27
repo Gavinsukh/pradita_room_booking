@@ -27,6 +27,7 @@ export default {
                 'conch': '#c2d4ca',
                 'mandys-pink': '#f2d1bd',
                 'beauty-bush': '#ecaeb4',
+                'pradita-orange': '#f16e21',
             },
         },
     },
