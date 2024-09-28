@@ -6,9 +6,7 @@
         </a>
     </div>
 
-    @error('date')
-    <div class="text-red-500 text-sm mt-2">{{ $message }}</div>
-@enderror
+
 
     <form method="POST" action="{{ route('check-available-slots', $room->id) }}">
         @csrf
@@ -18,7 +16,9 @@
             <label for="date" class="block text-gray-700">Booking Date</label>
             <input type="date" name="date" id="date" class="w-full mt-2 p-2 border rounded" required>
         </div>
-
+        @error('date')
+        <div class="text-red-500 text-sm mt-2">{{ $message }}</div>
+    @enderror
         <div class="mt-6">
             <button type="submit" class="bg-tango hover:bg-pradita-orange text-white px-4 py-2 rounded">
                 Check Available Slots
