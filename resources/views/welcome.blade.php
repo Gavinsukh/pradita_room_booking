@@ -39,6 +39,11 @@
             </div>
         </div>
 
+        <div class="whatsapp-widget fixed z-50 bottom-6 right-6 bg-green-500 p-3 rounded-full shadow-lg">
+            <a href="https://wa.me/+6289649096592?text=Hello%20I%20would%20like%20to%20know%20more%20about%20your%20services" target="_blank">
+                <img src="{{ asset('images/whatsapp-icon.png') }}" alt="WhatsApp" class="h-12 w-12">
+            </a>
+        </div>
 
         <div class="content">
             <div class="top-content relative" data-aos="fade-in" data-aos-duration="700">
@@ -107,8 +112,6 @@
                 </div>
             </div>
 
-
-
             <div class="footer w-full h-auto flex flex-col px-6 py-8 bg-gradient-to-r from-[#ea1f28] to-[#d32f2f] shadow-lg" data-aos="flip-up" data-aos-duration="700" data-aos-delay="500" id="contact">
                 <p class="text-white font-bold text-lg mb-4 text-center">
                     Where Can You Find Us?
@@ -123,7 +126,16 @@
                         <span>Contact us: 021 5568 9999 / 0815 8510 9999 / info@pradita.ac.id</span>
                     </div>
                     <div class="flex items-center">
-                        <img src="{{ asset('images/location.png') }}" alt="Phone" class="h-10 w-10 mr-2">
+                        <a href="https://wa.me/1234567890?text=Hello%20I%20would%20like%20to%20know%20more%20about%20your%20services" target="_blank" class="whatsapp-button">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
+                        </a>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="{{ asset('images/email.png') }}" alt="Email" class="h-12 w-12 mr-2">
+                        <span>Mail: info@pradita.ac.id</span>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="{{ asset('images/location.png') }}" alt="Location" class="h-10 w-10 mr-2">
                         <p class="text-white text-sm text-center">
                             PRADITA UNIVERSITY CAMPUS
                             Scientia Business Park Tower I
