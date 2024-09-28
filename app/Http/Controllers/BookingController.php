@@ -82,6 +82,8 @@ public function viewAllBookings(){
         ->map(function ($booking) {
             return [
                 'room_num' => $booking->rooms->room_num,
+                'room_type' => $booking->rooms->room_type,
+                'location' => $booking->rooms->location,
                 'date' => date('d F Y', strtotime($booking->date)), // Format: Day Month Year
                 'start_time' => date('H:i', strtotime($booking->start_time)), // Format: HH:MM
                 'end_time' => date('H:i', strtotime($booking->end_time)), // Format: HH:MM

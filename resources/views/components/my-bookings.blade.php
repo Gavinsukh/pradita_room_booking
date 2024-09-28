@@ -1,19 +1,39 @@
-
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     @foreach($bookings as $booking)
-        <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col">
-            <h3 class="font-bold text-lg mb-3 text-pradita-orange">Room {{ $booking['room_num'] }}</h3>
-            <p><strong>Date:</strong> {{ $booking['date'] }}</p>
-            <p><strong>Time:</strong> {{ $booking['start_time'] }} - {{ $booking['end_time'] }}</p>
+        <div class="bg-white shadow-lg rounded-2xl p-8 flex flex-col">
 
-            <p class="text-green-pea font-semibold"><strong class="text-black font-normal">Status:</strong> {{ $booking['status'] }}</p>
-            <button type="button" class="bg-tango text-white px-4 py-2 rounded hover:bg-pradita-orange mt-4"
+            <div class="flex justify-between mb-5">
+                <div>
+                    <h3 class="font-extrabold text-xl text-pradita-orange">
+                        Room {{ $booking['room_num'] }}
+                    </h3>
+                    <p class="text-gray-500 text-sm">{{ $booking['location'] }}</p>
+                    <p class="text-gray-500 text-sm">{{ $booking['room_type'] }}</p>
+                </div>
+
+                <span class="text-green-pea font-semibold text-sm">
+                    {{ $booking['status'] === 'confirmed' ? 'Confirmed' : ucfirst($booking['status']) }}
+                </span>
+            </div>
+
+            <div class="text-gray-600 text-center mb-4">
+                <p class="mb-2">
+                    <strong class="text-gray-800">Date:</strong> {{ $booking['date'] }}
+                </p>
+                <p>
+                    <strong class="text-gray-800">Time:</strong> {{ $booking['start_time'] }} - {{ $booking['end_time'] }}
+                </p>
+            </div>
+
+            <button type="button" class="bg-tango text-white px-5 py-3 rounded-full hover:bg-pradita-orange focus:ring-4 focus:ring-tango-light transition-all duration-300"
                 onclick="showConfirmationModal('{{ route('booking-cancel', $booking['id']) }}')">
                 Cancel Booking
             </button>
         </div>
     @endforeach
 </div>
+
+
 
 <!-- Modal Structure -->
 <div id="confirmationModal" class="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex items-center justify-center hidden transition-opacity duration-300 ease-in-out">
