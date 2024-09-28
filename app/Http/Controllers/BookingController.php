@@ -29,6 +29,7 @@ public function checkAvailableSlots(Request $request, $id)
     // Fetch the booked slots for the selected date
     $bookedSlots = Booking_Detail::where('room_id', $id)
         ->where('date', $request->date)
+        ->where('status', 'confirmed')
         ->pluck('start_time')
         ->map(function ($time) {
             return date('H:i', strtotime($time)); // Format 'HH:MM'
@@ -75,5 +76,11 @@ public function confirmBooking(Request $request, $roomId)
 
     // Redirect to a confirmation page or back to the dashboard
     return redirect()->route('dashboard')->with('success', 'Room booked successfully!');
+}
+
+public function viewAllBookings(){
+    $bookings = Booking_Detail::where('user_id', Auth::id())->get();
+
+    return view('dashboard', compact('bookings'));
 }
 }

@@ -16,6 +16,12 @@
                         {{ __('Book Meeting Room') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('my-bookings') }}" :active="request()->routeIs('my-bookings')" class="text-tango font-semibold hover:text-pradita-orange focus:text-pradita-orange active:text-pradita-orange">
+                        {{ __('My Bookings') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
