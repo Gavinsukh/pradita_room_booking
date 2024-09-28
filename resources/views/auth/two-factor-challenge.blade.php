@@ -48,7 +48,7 @@
                         {{ __('Use an authentication code') }}
                     </button>
 
-                    <x-button class="ms-4">
+                    <x-button class="ms-4 bg-tango hover:bg-pradita-orange">
                         {{ __('Log in') }}
                     </x-button>
                 </div>
