@@ -74,7 +74,21 @@ public function confirmBooking(Request $request, $roomId)
 }
 
 public function viewAllBookings(){
-    $bookings = Booking_Detail::where('user_id', Auth::id())->get();
+    $bookings = Booking_Detail::where('user_id', Auth::id())
+        ->with('rooms')
+        ->orderBy('date', 'asc')
+        ->orderBy('start_time', 'asc')
+        ->get()
+        ->map(function ($booking) {
+            return [
+                'room_num' => $booking->rooms->room_num,
+                'date' => date('d F Y', strtotime($booking->date)), // Format: Day Month Year
+                'start_time' => date('H:i', strtotime($booking->start_time)), // Format: HH:MM
+                'end_time' => date('H:i', strtotime($booking->end_time)), // Format: HH:MM
+                'status' => ucfirst($booking->status),
+                'id' => $booking->id
+            ];
+        });
 
     return view('dashboard', compact('bookings'));
 }
@@ -83,17 +97,8 @@ public function cancelBooking($id)
 {
     $booking = Booking_Detail::findOrFail($id);
 
-    $booking->update(['status' => 'cancelled']);
-
-    return redirect('my-bookings');
-}
-
-public function removeBooking($id)
-{
-    $booking = Booking_Detail::findOrFail($id);
-
     $booking->delete();
 
-    return redirect('my-bookings');
+    return redirect('my-bookings')->with('success', 'Booking cancelled successfully!');
 }
 }

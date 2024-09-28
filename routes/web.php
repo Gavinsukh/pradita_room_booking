@@ -19,6 +19,5 @@ Route::middleware([
     Route::get('/book-room/{id}', [BookingController::class, 'bookRoom'])->name('book-room');
     Route::post('/room/{id}/check-available-slots', [BookingController::class, 'checkAvailableSlots'])->name('check-available-slots');
     Route::post('/book-room/{room}/confirm', [BookingController::class, 'confirmBooking'])->name('confirm-booking');
-    Route::post('/bookings/{id}/cancel', [BookingController::class, 'cancelBooking'])->name('booking-cancel');
-    Route::delete('/bookings/{id}/remove', [BookingController::class, 'removeBooking'])->name('booking-remove');
+    Route::delete('/bookings/{id}/cancel', [BookingController::class, 'cancelBooking'])->name('booking-cancel');
 });
