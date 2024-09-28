@@ -7,13 +7,50 @@
             <p><strong>Time:</strong> {{ $booking['start_time'] }} - {{ $booking['end_time'] }}</p>
 
             <p class="text-green-pea font-semibold"><strong class="text-black font-normal">Status:</strong> {{ $booking['status'] }}</p>
-            <form method="POST" action="{{ route('booking-cancel', $booking['id']) }}" class="mt-4">
-                @method('DELETE')
-                @csrf
-                <button type="submit" class="bg-tango text-white px-4 py-2 rounded hover:bg-pradita-orange ml-48">
-                    Cancel Booking
-                </button>
-            </form>
+            <button type="button" class="bg-tango text-white px-4 py-2 rounded hover:bg-pradita-orange mt-4"
+                onclick="showConfirmationModal('{{ route('booking-cancel', $booking['id']) }}')">
+                Cancel Booking
+            </button>
         </div>
     @endforeach
 </div>
+
+<!-- Modal Structure -->
+<div id="confirmationModal" class="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex items-center justify-center hidden transition-opacity duration-300 ease-in-out">
+    <div class="bg-white rounded-xl shadow-2xl p-8 max-w-sm w-full transform transition-transform duration-500 ease-in-out scale-95">
+        <div class="text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-red-600 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            <h3 class="font-bold text-2xl text-gray-800 mb-2">Cancel Booking?</h3>
+            <p class="text-gray-600 mb-6">Are you sure you want to cancel this booking? This action cannot be undone.</p>
+        </div>
+        <div class="flex justify-between items-center mt-6">
+            <button id="cancelButton" class="bg-gray-300 text-gray-700 hover:bg-gray-400 px-5 py-2 rounded-md transition-colors duration-300">
+                No, Keep It
+            </button>
+            <form id="confirmForm" method="POST" action="" class="inline-block">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="bg-red-600 text-white px-5 py-2 rounded-md hover:bg-red-700 transition-colors duration-300">
+                    Yes, Cancel
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function showConfirmationModal(actionUrl) {
+        // Set the form action to the specific booking's cancellation URL
+        document.getElementById('confirmForm').action = actionUrl;
+        // Show the modal
+        document.getElementById('confirmationModal').classList.remove('hidden');
+    }
+
+    // Hide modal when the user clicks "No, keep it"
+    document.getElementById('cancelButton').addEventListener('click', function() {
+        document.getElementById('confirmationModal').classList.add('hidden');
+    });
+</script>
