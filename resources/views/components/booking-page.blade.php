@@ -6,6 +6,10 @@
         </a>
     </div>
 
+    @error('date')
+    <div class="text-red-500 text-sm mt-2">{{ $message }}</div>
+@enderror
+
     <form method="POST" action="{{ route('check-available-slots', $room->id) }}">
         @csrf
 

@@ -21,6 +21,11 @@ public function checkAvailableSlots(Request $request, $id)
 {
     $room = Room::findOrFail($id);
     $date = $request->date;
+
+    $request->validate([
+        'date' => 'required|date|after_or_equal:today',
+    ]);
+
     // Fetch the booked slots for the selected date
     $bookedSlots = Booking_Detail::where('room_id', $id)
         ->where('date', $request->date)
