@@ -39,7 +39,7 @@ class CustomEmailVerification extends Notification
         return (new MailMessage)
         ->subject('Verify Your Email Address')
         ->greeting('Hello!')
-        ->line('Thank you for registering! Please verify your email address by clicking the button below.')
+        ->line('Thank you for using our services! Please verify your email address by clicking the button below.')
         ->action('Verify Email', $this->verificationUrl)
         ->line('If you did not create an account, no further action is required.')
         ->line('Thank you for using our application!')
