@@ -32,10 +32,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return URL::temporarySignedRoute(
             'verification.verify',
-            now()->addMinutes(5),  // Increased time limit to 60 minutes, adjust as needed
+            now()->addMinutes(5),
             [
                 'id' => $this->getKey(),  // User ID
-                'hash' => sha1($this->getEmailForVerification()),  // Hash of the email for verification
+                'hash' => sha1($this->getEmailForVerification()),
             ]
         );
     }
