@@ -1,6 +1,6 @@
 <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
     <div class="flex justify-between">
-        <h3 class="text-lg font-bold mb-4">Book Room {{ $room->room_num }}</h3>
+        <h3 class="text-lg font-bold mb-4 text-green-pea">Book Room {{ $room->room_num }}</h3>
         <a href="{{ route('dashboard') }}" class="text-tango hover:underline">
             &larr; Back to Dashboard
         </a>
