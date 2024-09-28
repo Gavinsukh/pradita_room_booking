@@ -8,7 +8,13 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-book />
+                @if(request()->routeIs('book-room'))
+                <!-- Booking Page Component -->
+                <x-booking-page :room="$room" :timeSlots="$timeSlots" />
+            @else
+                <!-- Room Listing Component -->
+                <x-room :rooms="$rooms" />
+            @endif
             </div>
         </div>
     </div>
