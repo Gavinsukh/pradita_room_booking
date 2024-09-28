@@ -27,7 +27,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <x-button>
+                <x-button class="bg-tango hover:bg-pradita-orange active:bg-pradita-orange focus:bg-pradita-orange">
                     {{ __('Reset Password') }}
                 </x-button>
             </div>
