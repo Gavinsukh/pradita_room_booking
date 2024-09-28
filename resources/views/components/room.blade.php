@@ -4,7 +4,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         @forelse($rooms as $room)
             <!-- Room Card -->
-            <div class="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div class="bg-white shadow-md">
                 <div class="p-6">
 
                     <h3 class="text-xl font-bold text-tango mb-2">Room {{ $room->room_num }}</h3>
