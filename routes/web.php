@@ -15,7 +15,10 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', [RoomController::class, 'viewAllRoom'])->name('dashboard');
     Route::get('/my-bookings', [BookingController::class, 'viewAllBookings'])->name('my-bookings');
+
     Route::get('/book-room/{id}', [BookingController::class, 'bookRoom'])->name('book-room');
     Route::post('/room/{id}/check-available-slots', [BookingController::class, 'checkAvailableSlots'])->name('check-available-slots');
     Route::post('/book-room/{room}/confirm', [BookingController::class, 'confirmBooking'])->name('confirm-booking');
+    Route::post('/bookings/{id}/cancel', [BookingController::class, 'cancelBooking'])->name('booking-cancel');
+    Route::delete('/bookings/{id}/remove', [BookingController::class, 'removeBooking'])->name('booking-remove');
 });

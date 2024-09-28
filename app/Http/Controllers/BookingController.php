@@ -52,19 +52,15 @@ public function checkAvailableSlots(Request $request, $id)
 public function confirmBooking(Request $request, $roomId)
 {
 
-    // Validate the request inputs
     $request->validate([
         'date' => 'required|date',
         'time_slot' => 'required',
     ]);
 
-    // Find the room by ID
     $room = Room::findOrFail($roomId);
 
-    // Extract start and end time from the selected time slot
     [$startTime, $endTime] = explode(' - ', $request->time_slot);
 
-    // Create the booking
     Booking_Detail::create([
         'user_id' => Auth::id(),
         'room_id' => $roomId,
@@ -74,7 +70,6 @@ public function confirmBooking(Request $request, $roomId)
         'end_time' => $endTime,
     ]);
 
-    // Redirect to a confirmation page or back to the dashboard
     return redirect()->route('dashboard')->with('success', 'Room booked successfully!');
 }
 
@@ -82,5 +77,23 @@ public function viewAllBookings(){
     $bookings = Booking_Detail::where('user_id', Auth::id())->get();
 
     return view('dashboard', compact('bookings'));
+}
+
+public function cancelBooking($id)
+{
+    $booking = Booking_Detail::findOrFail($id);
+
+    $booking->update(['status' => 'cancelled']);
+
+    return redirect('my-bookings');
+}
+
+public function removeBooking($id)
+{
+    $booking = Booking_Detail::findOrFail($id);
+
+    $booking->delete();
+
+    return redirect('my-bookings');
 }
 }

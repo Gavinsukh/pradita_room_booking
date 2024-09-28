@@ -20,9 +20,8 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
             @if(request()->routeIs('book-room'))
-                <!-- Booking Page Component -->
+            {{-- select date --}}
                 <x-booking-page :room="$room" />
-                {{-- <x-booking-page :room="$room" :timeSlots="$timeSlots" /> --}}
             @elseif (request()->routeIs('dashboard'))
                 <!-- Room Listing Component -->
                 <x-room :rooms="$rooms" />

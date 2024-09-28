@@ -5,7 +5,23 @@
             <p><strong>Date:</strong> {{ $booking->date }}</p>
             <p><strong>Time:</strong> {{ $booking->start_time }} - {{ $booking->end_time }}</p>
             <p><strong>Status:</strong> {{ ucfirst($booking->status) }}</p>
-            <a href="#" class="mt-4 text-blue-500 hover:underline">View Details</a>
+
+            @if ($booking->status == 'confirmed')
+            <form method="POST" action="{{ route('booking-cancel', $booking->id) }}" class="mt-4">
+                @csrf
+                <button type="submit" class="bg-tango text-white px-4 py-2 rounded hover:bg-pradita-orange">
+                    Cancel Booking
+                </button>
+            </form>
+            @else
+            <form method="POST" action="{{ route('booking-remove', $booking->id) }}" class="mt-4">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+                    Remove
+                </button>
+            </form>
+            @endif
         </div>
     @endforeach
 </div>
