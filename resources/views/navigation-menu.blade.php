@@ -41,7 +41,7 @@
                             </div>
 
                             <x-dropdown-link href="{{ route('profile.show') }}" class="text-pradita-orange font-semibold">
-                                {{ __('Profile') }}
+                                {{ __('Edit Profile') }}
                             </x-dropdown-link>
 
 
