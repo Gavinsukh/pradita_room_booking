@@ -63,16 +63,6 @@ public function confirmBooking(Request $request, $roomId)
     // Extract start and end time from the selected time slot
     [$startTime, $endTime] = explode(' - ', $request->time_slot);
 
-    // Check if the room is already booked during this time slot on the selected date
-    $existingBooking = Booking_Detail::where('room_id', $roomId)
-        ->where('date', $request->date)
-        ->where('start_time', $startTime)
-        ->exists();
-
-    if ($existingBooking) {
-        return redirect()->back()->withErrors(['time_slot' => 'The selected time slot is already booked.']);
-    }
-
     // Create the booking
     Booking_Detail::create([
         'user_id' => Auth::id(),
