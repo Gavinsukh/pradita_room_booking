@@ -45,6 +45,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Booking_Detail::class);
     }
 
+    public function is_admin(){
+       return $this->role === 'admin';
+    }
+
     /**
      * The attributes that are mass assignable.
      *

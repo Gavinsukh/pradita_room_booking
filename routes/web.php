@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
+use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\BookingController;
 
 Route::get('/', function () {
@@ -20,6 +21,14 @@ Route::middleware([
     Route::post('/room/{id}/check-available-slots', [BookingController::class, 'checkAvailableSlots'])->name('check-available-slots');
     Route::post('/book-room/{room}/confirm', [BookingController::class, 'confirmBooking'])->name('confirm-booking');
     Route::delete('/bookings/{id}/cancel', [BookingController::class, 'cancelBooking'])->name('booking-cancel');
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+    AdminMiddleware::Class,
+])->group(function () {;
 
     Route::get('/manage-rooms', [RoomController::class, 'adminViewAllRoom'])->name('manage-rooms');
     Route::delete('/delete-room/{id}', [RoomController::class, 'deleteRoom'])->name('delete-room');
