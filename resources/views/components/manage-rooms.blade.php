@@ -1,4 +1,4 @@
-<button type="button" class="bg-bay-leaf text-white mb-3 px-5 py-3 rounded-lg hover:bg-green-pea focus:ring-4 focus:ring-tango-light transition-all duration-300"
+<button type="button" class="bg-green-pea text-white mb-3 px-5 py-3 rounded-lg hover:bg-bay-leaf focus:ring-4 focus:ring-tango-light transition-all duration-300"
 onclick="showCreateModal()">
     Create Room
 </button>
