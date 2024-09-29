@@ -10,13 +10,13 @@ use App\Http\Controllers\Controller;
 class RoomController extends Controller
 {
     public function viewAllRoom(){
-        $rooms = Room::all();
+        $rooms = Room::orderBy('room_num')->get();
 
         return view('dashboard', compact('rooms'));
     }
 
     public function adminViewAllRoom(){
-        $rooms = Room::all();
+        $rooms = Room::orderBy('room_num')->get();
 
         return view('dashboard', compact('rooms'));
     }
@@ -48,6 +48,28 @@ class RoomController extends Controller
         ]);
 
         $room = Room::findOrFail($request->id);
+
+        $room->room_num = $request->room_num;
+        $room->room_type = $request->room_type;
+        $room->capacity = $request->capacity;
+        $room->location = $request->location;
+
+        $room->save();
+
+        return redirect('manage-rooms')->with('success', 'Room updated successfully!');
+    }
+
+    public function createRoom(Request $request){
+
+
+        $request->validate([
+           'room_num' => 'required|string|max:255|unique:rooms,room_num,' . $request->id,
+            'room_type' => 'required|string|max:255|in:large,medium,small,introvert',
+            'capacity' => 'required|integer|min:1',
+            'location' => 'required|string|max:255',
+        ]);
+
+        $room = new Room();
 
         $room->room_num = $request->room_num;
         $room->room_type = $request->room_type;

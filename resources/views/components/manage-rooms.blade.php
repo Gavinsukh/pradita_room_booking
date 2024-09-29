@@ -1,14 +1,21 @@
+<button type="button" class="bg-bay-leaf text-white mb-3 px-5 py-3 rounded-lg hover:bg-green-pea focus:ring-4 focus:ring-tango-light transition-all duration-300"
+onclick="showCreateModal()">
+    Create Room
+</button>
+
+@if (session('success'))
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-3" role="alert">
+        <strong class="font-bold">Success!</strong>
+        <span class="block sm:inline">{{ session('success') }}</span>
+    </div>
+@endif
+
 @if (session('error'))
     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-3" role="alert">
         <strong class="font-bold">Failed!</strong>
         <span class="block sm:inline">{{ session('error') }}</span>
     </div>
 @endif
-
-<button type="button" class="bg-bay-leaf text-white mb-3 px-5 py-3 rounded-lg hover:bg-green-pea focus:ring-4 focus:ring-tango-light transition-all duration-300"
-onclick="showCreateModal()">
-    Create Room
-</button>
 
 @if ($errors->any())
 <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-3" role="alert">
@@ -103,7 +110,7 @@ onclick="showCreateModal()">
 
             <!-- Modal Buttons -->
             <div class="flex justify-between items-center mt-6">
-                <button type="button" id="cancelButton" class="bg-gray-300 text-gray-700 hover:bg-gray-400 px-5 py-2 rounded-md transition-colors duration-300">
+                <button type="button" id="cancelUpdateButton" class="bg-gray-300 text-gray-700 hover:bg-gray-400 px-5 py-2 rounded-md transition-colors duration-300">
                     Cancel
                 </button>
                 <button type="submit" class="bg-tango text-white px-5 py-2 rounded-md hover:bg-pradita-orange transition-colors duration-300">
@@ -114,23 +121,87 @@ onclick="showCreateModal()">
     </div>
 </div>
 
+
+<!-- Create Modal Structure -->
+<div id="CreateModal" class="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex items-center justify-center hidden transition-opacity duration-300 ease-in-out">
+    <div class="bg-white rounded-xl shadow-2xl p-8 max-w-lg w-full transform transition-transform duration-500 ease-in-out scale-95">
+        <div class="text-center mb-6">
+            <h3 class="font-bold text-2xl text-gray-800">Create Room</h3>
+            <p class="text-gray-600 mb-4">Fill the room details below:</p>
+        </div>
+
+        <!-- Create Form -->
+        <form id="createForm" method="POST" action="{{ route('create-room') }}">
+            @csrf
+
+            <!-- Room Number -->
+            <div class="mb-4">
+                <label for="create_room_num" class="block text-gray-700 text-sm font-bold mb-2">Room Number</label>
+                <input type="text" id="create_room_num" name="room_num" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" value="">
+            </div>
+
+            <!-- Room Type -->
+            <div class="mb-4">
+                <label for="create_room_type" class="block text-gray-700 text-sm font-bold mb-2">Room Type (small / medium / large / introvert)</label>
+                <input type="text" id="create_room_type" name="room_type" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" value="">
+            </div>
+
+            <!-- Capacity -->
+            <div class="mb-4">
+                <label for="create_capacity" class="block text-gray-700 text-sm font-bold mb-2">Capacity</label>
+                <input type="text" id="create_capacity" name="capacity" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" value="">
+            </div>
+
+            <!-- Location -->
+            <div class="mb-6">
+                <label for="create_location" class="block text-gray-700 text-sm font-bold mb-2">Location</label>
+                <input type="text" id="create_location" name="location" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" value="">
+            </div>
+
+            <!-- Modal Buttons -->
+            <div class="flex justify-between items-center mt-6">
+                <button type="button" id="cancelCreateButton" class="bg-gray-300 text-gray-700 hover:bg-gray-400 px-5 py-2 rounded-md transition-colors duration-300">
+                    Cancel
+                </button>
+                <button type="submit" class="bg-tango text-white px-5 py-2 rounded-md hover:bg-pradita-orange transition-colors duration-300">
+                    Create Room
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
 <script>
+    // ----------------------- Update ----------------------------------------------------------------
     function showUpdateModal(actionUrl, roomNum, roomType, capacity, location) {
-        // Set the form action to the room's update URL
         document.getElementById('updateForm').action = actionUrl;
 
-        // Pre-fill the form with existing room data
         document.getElementById('room_num').value = roomNum;
         document.getElementById('room_type').value = roomType;
         document.getElementById('capacity').value = capacity;
         document.getElementById('location').value = location;
 
-        // Show the modal
         document.getElementById('UpdateModal').classList.remove('hidden');
     }
 
-    // Hide modal when the user clicks "Cancel"
-    document.getElementById('cancelButton').addEventListener('click', function() {
+    document.getElementById('cancelUpdateButton').addEventListener('click', function() {
         document.getElementById('UpdateModal').classList.add('hidden');
+    });
+
+    // ----------------------- Create ----------------------------------------------------------------
+    function showCreateModal() {
+        // Reset the input fields for a new room
+        document.getElementById('create_room_num').value = '';
+        document.getElementById('create_room_type').value = '';
+        document.getElementById('create_capacity').value = '';
+        document.getElementById('create_location').value = '';
+
+        // Show the modal
+        document.getElementById('CreateModal').classList.remove('hidden');
+    }
+
+    document.getElementById('cancelCreateButton').addEventListener('click', function() {
+        document.getElementById('CreateModal').classList.add('hidden');
     });
 </script>

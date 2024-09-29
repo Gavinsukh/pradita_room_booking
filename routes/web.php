@@ -24,4 +24,5 @@ Route::middleware([
     Route::get('/manage-rooms', [RoomController::class, 'adminViewAllRoom'])->name('manage-rooms');
     Route::delete('/delete-room/{id}', [RoomController::class, 'deleteRoom'])->name('delete-room');
     Route::put('/update-room/{id}', [RoomController::class, 'updateRoom'])->name('update-room');
+    Route::post('/create-room', [RoomController::class, 'createRoom'])->name('create-room');
 });
