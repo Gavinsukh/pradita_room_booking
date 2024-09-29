@@ -16,6 +16,8 @@
 
         @if (request()->routeIs('my-bookings'))
             <x-my-bookings :bookings="$bookings"/>
+        @elseif(request()->routeIs('manage-rooms'))
+            <x-manage-rooms :rooms="$rooms" />
         @endif
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 

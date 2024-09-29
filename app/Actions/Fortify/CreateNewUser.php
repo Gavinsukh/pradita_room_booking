@@ -26,6 +26,7 @@ class CreateNewUser implements CreatesNewUsers
             'role' => ['required', 'string','in:admin,user']
         ])->validate();
 
+        // dd($input['role'])
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],

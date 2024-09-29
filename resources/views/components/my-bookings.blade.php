@@ -1,5 +1,5 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    @foreach($bookings as $booking)
+    @forelse($bookings as $booking)
         <div class="bg-white shadow-lg rounded-2xl p-8 flex flex-col">
 
             <div class="flex justify-between mb-5">
@@ -8,7 +8,7 @@
                         Room {{ $booking['room_num'] }}
                     </h3>
                     <p class="text-gray-500 text-sm">{{ $booking['location'] }}</p>
-                    <p class="text-gray-500 text-sm">{{ $booking['room_type'] }}</p>
+                    <p class="text-gray-500 text-sm">{{ Str::ucfirst($booking['room_type']) }}</p>
                 </div>
 
                 <span class="text-green-pea font-semibold text-sm">
@@ -30,7 +30,14 @@
                 Cancel Booking
             </button>
         </div>
-    @endforeach
+    @empty
+    <div class="">
+        <h1 class=" text-gray-500">You Have No Booking Schedule</h1>
+    </div>
+
+    @endforelse
+
+
 </div>
 
 

@@ -22,7 +22,7 @@
             <div class="mt-4">
                 <x-label for="role" value="{{ __('Role') }}" />
                 <select id="role" name="role" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" wire:model="role">
-                    <option value="admin">
+                    <option value="admin" selected>
                         Admin
                     </option>
                     <option value="user">

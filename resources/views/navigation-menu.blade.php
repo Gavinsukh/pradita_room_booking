@@ -22,6 +22,14 @@
                         {{ __('My Bookings') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    @if (Auth::user()->role == 'admin')
+                    <x-nav-link href="{{ route('manage-rooms') }}" :active="request()->routeIs('manage-rooms')" class="text-tango font-semibold hover:text-pradita-orange focus:text-pradita-orange active:text-pradita-orange">
+                        {{ __('Manage Rooms') }}
+                    </x-nav-link>
+                @endif
+                </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
