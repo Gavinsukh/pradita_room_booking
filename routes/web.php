@@ -36,4 +36,6 @@ Route::middleware([
     Route::post('/create-room', [RoomController::class, 'createRoom'])->name('create-room');
 
     Route::get('/create-room', [RoomController::class, 'redirectAccess'])->name('redirect-create-room');
+    Route::get('/delete-room/{id}', [RoomController::class, 'redirectAccess'])->name('redirect-delete-room');
+    Route::get('/update-room/{id}', [RoomController::class, 'redirectAccess'])->name('redirect-update-room');
 });
