@@ -42,7 +42,7 @@ onclick="showCreateModal()">
                     <strong class="text-gray-800">Capacity:</strong> {{$room->capacity}}
                 </p>
                 <p>
-                    <strong class="text-gray-800">Location:</strong> {{$room->location}}
+                    <strong class="text-gray-800">Location:</strong> {{ ucfirst($room->location)}}
                 </p>
             </div>
 

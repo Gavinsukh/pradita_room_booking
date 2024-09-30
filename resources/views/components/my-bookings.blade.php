@@ -14,7 +14,7 @@
                     <h3 class="font-extrabold text-xl text-pradita-orange">
                         Room {{ $booking['room_num'] }}
                     </h3>
-                    <p class="text-gray-500 text-sm">{{ $booking['location'] }}</p>
+                    <p class="text-gray-500 text-sm">{{ Str::ucfirst($booking['location']) }}</p>
                     <p class="text-gray-500 text-sm">{{ Str::ucfirst($booking['room_type']) }}</p>
                 </div>
 

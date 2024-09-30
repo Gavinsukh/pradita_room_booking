@@ -80,4 +80,8 @@ class RoomController extends Controller
 
         return redirect('manage-rooms')->with('success', 'Room updated successfully!');
     }
+
+    public function redirectAccess(Request $request){
+        return redirect()->back();
+    }
 }

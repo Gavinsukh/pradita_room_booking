@@ -16,7 +16,7 @@
                     <h3 class="text-xl font-bold text-tango mb-2">Room {{ $room->room_num }}</h3>
                     <p class="text-gray-600 text-sm">{{ ucfirst($room->room_type) }} Room</p>
                     <p class="mt-2 text-gray-800"><strong>Capacity:</strong> {{ $room->capacity }} people</p>
-                    <p class="text-gray-800"><strong>Location:</strong> {{ $room->location }}</p>
+                    <p class="text-gray-800"><strong>Location:</strong> {{ ucfirst($room->location)}}</p>
                 </div>
 
                 <div class="p-4 bg-concrete flex justify-center">
